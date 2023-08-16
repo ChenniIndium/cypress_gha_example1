@@ -1,10 +1,10 @@
 version: '2.1'
 orbs:
-  cypress-io: cypress-io/cypress@3
+  cypress: cypress/cypress@3
 executor: cypress/default
 workflows:
   use-my-orb:
     jobs:
-      - cypress-io/run:
+      - cypress/run:
           cypress-command: npx cypress run --browser chrome
 
