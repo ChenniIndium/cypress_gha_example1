@@ -1,9 +1,12 @@
-version: '2.1'
-orbs:
-  cypress-io: cypress-io/cypress@3
-workflows:
-  use-my-orb:
-    jobs:
-      - cypress-io/run:
-          cypress-command: npx cypress run --browser chrome
+version: 2.1
 
+jobs:
+  build:
+    steps:
+      - checkout # Checkout your source code
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: Run Cypress Tests
+          command: npm run cypress:run # Replace with your actual Cypress test command
