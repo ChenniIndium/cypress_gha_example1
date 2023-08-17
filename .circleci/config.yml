@@ -1,39 +1,9 @@
-version: 2.1
-
-executors:
-  cypress-executor:
-    docker:
-      - image: cypress/base:12.18.4
-
-commands:
-  cypress-install:
-    steps:
-      - run:
-          name: Install Cypress
-          command: npm install
-
-jobs:
-  cypress-run-project-a-job-1:
-    executor: cypress-executor
-    steps:
-      - checkout
-      - cypress-install
-      - run:
-          name: Run Project A - Job 1 Tests
-          command: npm run cypress:projectA:job1
-
-  cypress-run-project-a-job-2:
-    executor: cypress-executor
-    steps:
-      - checkout
-      - cypress-install
-      - run:
-          name: Run Project A - Job 2 Tests
-          command: npm run cypress:projectA:job2
-
+version: '2.1'
+orbs:
+  cypress: cypress-io/cypress@3
+executor: cypress/default
 workflows:
-  version: 2
-  build-and-test:
+  use-my-orb:
     jobs:
-      - cypress-run-project-a-job-1
-      - cypress-run-project-a-job-2
+      - cypress/run:
+          cypress-command: npx cypress run --browser chrome
