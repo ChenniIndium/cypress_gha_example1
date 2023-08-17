@@ -1,13 +1,9 @@
 version: 2.1
 
- 
-
 executors:
   cypress-executor:
     docker:
       - image: cypress/base:12.18.4
-
- 
 
 commands:
   cypress-install:
@@ -16,8 +12,6 @@ commands:
           name: Install Cypress
           command: npm install
 
- 
-
 jobs:
   cypress-run-project-a-job-1:
     executor: cypress-executor
@@ -25,10 +19,8 @@ jobs:
       - checkout
       - cypress-install
       - run:
-          name: Run Project A - Job 1
+          name: Run Project A - Job 1 Tests
           command: npm run cypress:projectA:job1
-
- 
 
   cypress-run-project-a-job-2:
     executor: cypress-executor
@@ -36,18 +28,12 @@ jobs:
       - checkout
       - cypress-install
       - run:
-          name: Run Project A - Job 2
+          name: Run Project A - Job 2 Tests
           command: npm run cypress:projectA:job2
-
- 
-
-  # Define other job configurations similarly
-
- 
 
 workflows:
   version: 2
   build-and-test:
     jobs:
-      - cypress-run-${CIRCLE_PROJECT_NAME}-${JOB_NUM_1}
-      - cypress-run-${CIRCLE_PROJECT_NAME}-${JOB_NUM_2}
+      - cypress-run-project-a-job-1
+      - cypress-run-project-a-job-2

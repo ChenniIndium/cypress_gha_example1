@@ -4,7 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
+    "cypress:projectA:job1": "cypress run --config-file cypress/projectA/job1/cypress.json",
+    "cypress:projectA:job2": "cypress run --config-file cypress/projectA/job2/cypress.json"
   },
   "keywords": [],
   "author": "",
